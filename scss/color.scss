@@ -1,0 +1,9 @@
+$main:#4d4959;
+$white:#fff;
+$block:#f7f7f7;
+$text:#848789;
+$element:rgba(100, 194, 158);
+@mixin elementOpacity($opacity){
+	background: $element;
+	opacity: $opacity;
+}

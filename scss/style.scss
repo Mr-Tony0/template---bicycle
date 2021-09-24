@@ -1,0 +1,744 @@
+@import 'fonts.scss';
+@import 'default.scss';
+@import 'color.scss';
+.container{
+	max-width:1100px;
+	margin: 0 auto;
+}
+.mainBlock{
+	height: 100vh;
+	width: 100%;
+	background: url('../img/bg.png') center / cover no-repeat fixed;
+}
+.header{
+	width: 100%;
+	position: relative;
+	&:before{
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
+	}
+	&__content{
+		display: flex;
+		justify-content: center;
+		align-items:center;
+	}
+	&__menu{
+		display: flex;
+		align-items:center;
+		z-index: 2;
+	}
+	&__logo{
+		max-width:100%;
+		&__mobile{
+			display: none;
+			z-index: 2;
+		}
+	}
+	&__item{
+		margin:50px;
+		color:$main;
+		position: relative;
+		@include font(700);
+		transition: all 0.6s ease 0s;
+		&:hover{
+			color:$element;
+		}
+		&:before{
+			content:'';
+			position: absolute;
+			top:80%;
+			left: -100%;	
+			height: 3px;
+			width: 3px;
+			background:$main ;
+			border-radius: 50%;
+		}
+		&:first-child,&:nth-child(3),
+			&:nth-child(4){
+				&:before{
+					content:'';
+					display:none;
+				}
+			}
+		&:nth-child(5){
+			&:before{
+				content:'';
+				left: -70%;
+			}
+		}
+	}
+	&__burger{
+		display: none;	
+		width: 30px;	
+		height: 20px;	
+		position: relative;
+		z-index: 2;
+		span{
+			position: absolute;
+			background:$main;
+			height: 2px;
+			width: 100%;	
+			left:0;
+			top:9px;
+			transition: all 0.3s ease 0s;
+		}
+		&:after,&:before{
+			content: '';
+			width: 100%;	
+			height: 2px;
+			background:$main;
+			position: absolute;
+			left:0;
+			transition: all 0.3s ease 0s;
+		}
+		&:after{
+			top:0;
+		}
+		&:before{
+			bottom: 0;
+		}
+		&.active{
+			span{
+				transform:scale(0);
+				background: $white;
+			}
+			&:after{
+				transform:rotate(45deg);
+				top:9px;
+				background: $white;
+			}
+			&:before{
+				transform:rotate(-45deg);
+				bottom: 9px;
+				background: $white;
+			}
+		}
+	}
+	@media(max-width:860px ){
+		&__item{
+			margin:40px;
+			&:before{
+				left: -90%;
+			}
+			&:nth-child(5){
+				&:before{
+					left: -50%;
+				}
+			}
+		}
+	}
+	@media(max-width:770px){
+		&__content{
+			justify-content: space-between;
+		}
+		&__burger{
+			display: block;
+			z-index: 2;
+			margin: 10px;
+		}
+		&__logo{
+			display:block;
+			margin: 10px;
+			width: 80px;
+		}
+		&__menu{
+			position:fixed;
+			left: 0;
+			top:-200%;
+			height: 100%;	
+			width: 100%;
+			z-index: 1;
+			background: $main;
+			flex-direction:column;
+			padding-top: 80px;
+			transition: all 0.9s ease 0s;
+			overflow: auto;
+			&.active{
+				top:0%;
+			}		
+		}
+		&__item{
+			color:$white;
+			margin: 20px;
+   			padding-bottom: 80px;
+			&__none{
+				display: none;
+			}
+			&:after{
+				content:'';
+				position: absolute;
+				top:-50%;
+				left: 50%;	
+				height: 3px;
+				width: 3px;
+				background:$white ;
+				border-radius: 50%;
+			}
+			&:first-child{
+				&:after{
+					display: none;
+				}
+			}
+		}
+	}
+}
+.about{
+	width: 100%;
+	background: $block;
+	&__content{
+		width: 100%;
+		text-align: center;
+		padding:100px 0 100px 0;
+	}
+	&__text{
+		@include font(400);
+		margin: 10px;
+	}
+	@media(max-width: 770px){
+		&__content{
+			padding:70px 0 70px 0;
+		}
+		&__text{
+			font-size: 14px;
+		}
+	}
+	@media(max-width: 430px){
+		&__content{
+			padding:50px 0 50px 0;
+		}
+		&__text{
+			font-size: 12px;
+		}
+	}
+}
+.titleBlock{
+	margin: 0 auto;
+	text-align: center;
+	&__img{
+		max-width: 100%;
+	}
+	span{
+		color:$text;
+		font-size: 16px;
+		@include font(400);
+	}
+	&__title{
+		@include font(700);
+	}
+	
+	@media(max-width: 850px){
+		&__title{
+			font-size: 20px;
+		}
+	}
+	@media(max-width: 430px){
+		&__title{
+			font-size: 16px;
+		}
+	}
+}
+.bike{
+	width: 100%;
+	&__content{
+		width: 100%;
+		height: 600px;
+		display: flex;
+		align-items:center;
+		&__reverse{
+			flex-direction: row-reverse
+		}
+	}
+	&__bg{
+		width: 65%;
+		background: url('../img/Layer 10.png') center / cover no-repeat;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		height: 100%;
+		position: relative;
+		&__second{
+			background: url('../img/Layer 12.png') center / cover no-repeat;
+		}
+		&__third{
+			background: url('../img/Layer 15.png') center / cover no-repeat;
+			width: 33.333%;
+		}
+		&__fourth{
+			background: url('../img/Layer 14.png') center / cover no-repeat;
+			width: 33.333%;
+		}
+	}
+	&__img{
+		max-width: 100%;
+		z-index: 2;
+	}
+	&__logoLink{
+		display: flex;
+		justify-content: center;	
+		align-items:center;
+		width: 100%;	
+		height: 100%;
+		position: relative;
+		&:before{
+			content: '';
+			position: absolute;
+			height: 0%;	
+			width: 100%;
+			top: 0%;	
+			left: 0%;
+			transition: all 0.6s ease 0s;
+			@include elementOpacity(0.8);	
+
+		}
+		&:after{
+			content: '';
+			position: absolute;
+			height: 0%;	
+			width: 100%;
+			bottom: 0%;	
+			right: 0%;
+			transition: all 0.6s ease 0s;
+			@include elementOpacity(0.8)
+			
+		}
+		&:hover{	
+				&:before{	
+					height: 50%;	
+					width: 100%;
+				}
+				&:after{	
+					height: 50%;	
+					width: 100%;
+				}
+			}
+	}
+	&__description{
+		width: 35%;
+		height: 100%;
+		display:flex;
+		flex-direction:column;
+		align-items: center;
+		&__otherWidrh{
+			width: 33.333%;
+		}
+	}
+	&__info{
+		padding-top: 70px;
+		flex: 1 1 auto;
+		width: 57%;
+		position: relative;
+		&:after{
+			content: '';
+			height: 0;
+			width: 0;
+			position: absolute;
+			bottom:-10px;
+			left:50%;
+			border-top:10px solid white;
+			border-left:10px solid transparent;
+			border-right:10px solid transparent;
+		}
+	}
+	&__imgBlock{
+		width: 100%;
+		height: 200px;
+		background: url('../img/Layer 11.png') center / cover no-repeat;
+		&__second{
+			background: url('../img/Layer 13.png') center / cover no-repeat;
+		}
+		&__third{
+			background: url('../img/Layer 16.png') center / cover no-repeat;
+		}
+	}
+	&__text{
+		@include font(400);
+		position: relative;
+		&:after{
+			content: '';
+			background: $block;
+			width: 50px;
+			height: 1px;
+			position: absolute;
+			bottom:-35px;
+			left:43%;
+
+		}
+	}
+	@media(max-width: 900px){
+		&__content{
+			height: 400px;
+		}
+		&__info{
+			padding-top: 10px;
+   			padding-bottom: 10px;
+   			width: 94%;
+		}
+		&__text{
+			&:after{
+				bottom: -20px;
+			}
+		}
+	}
+	@media(max-width: 1200px){
+		&__info{
+   			width: 80%;
+		}
+	}
+	@media(max-width: 770px){
+		&__content{
+			flex-direction:column-reverse;
+			height: 100%;
+
+		}
+		&__bg{
+			width: 100%;
+			height: 450px;
+			&__fourth{
+				display: none;
+			}	
+		}
+		&__description{
+			flex-direction:row;
+			width: 70%;	
+		}
+		&__info{
+			padding: 40px 0 40px 0;
+		}
+		&__imgBlock{
+			display: none;
+		}
+	}
+	@media(max-width: 500px){
+		&__bg{
+			height: 350px;
+		}
+	}
+	@media(max-width: 400px){
+		&__bg{
+			height: 250px;
+		}
+	}
+}
+.social{
+	width: 100%;
+	background: $block;
+	&__content{
+		width: 68%;
+		padding: 100px 0 100px 0;
+		overflow: hidden;
+		margin: 0 auto;	
+	}
+	&__slider{
+		display: flex;
+		margin: 0 auto;
+		width: 100%;
+		text-align: center;
+		position: relative;
+	}
+	&__slide{
+		min-width: 100%;
+	}
+	&__switch{
+		display: flex;	
+		width: 50px;	
+		justify-content: space-around;
+		align-items:center;
+		margin: 0 auto;
+		padding: 0px 0 100px 0;
+	}
+	&__point{
+		height: 10px;	
+		width: 10px;
+		border:1px solid #A9AFB3;
+		margin-bottom: 30px;
+		border-radius: 50%;	
+		&.on{
+			background:#A9AFB3;
+		}
+	}
+	&__text{
+		@include font(400);
+	}
+	@media(max-width: 720px){
+		&__content{
+			padding: 70px 0 70px 0;
+			width: 80%
+		}
+		&__switch{
+			padding: 0px 0 70px 0;
+		}
+	}
+	@media(max-width: 430px){
+		&__content{
+			padding: 30px 0 30px 0;
+			width: 90%
+		}
+		&__switch{
+			padding: 0px 0 30px 0;
+		}
+	}	
+}
+.shop{
+	width: 100%;
+	&__content{
+		width:100%;
+		display: flex;	
+	}
+	&__column{
+		width: 33.333%;
+		display: flex;
+		flex-direction:column;
+	}
+	&__img{
+		max-width: 100%;
+		min-height: 100%;
+		min-width: 100%;
+		
+	}
+	&__row{
+		display: flex;
+		width: 100%;
+		height: 100%;
+		&__min{
+			height: 50%;
+		}
+	}
+	&__hover{
+		position: relative;
+		&:before{
+			content: '';
+			position: absolute;
+			height: 100%;	
+			width: 100%;
+			top: 0%;	
+			left: 0%;
+			opacity: 0;
+			transition: all 0.9s ease 0s;
+			background-color: $element;	
+
+		}
+		
+		&:hover{
+			&:before,.shop__logo{
+				opacity: 0.8;
+			}
+		}
+	}
+	&__longBlock{
+		//height: 50%;
+		width: 100%;
+		.shop__logo{
+			width: 15%;
+			left: 40%;
+		}
+	}
+	&__heightBlock{
+		width: 50%;
+		//height: 100%;
+		position: relative;
+		.shop__logo{
+			width: 30%;
+		}
+	}
+	&__logo{
+		position: absolute;
+		left: 37%;
+		top:42%;
+		opacity: 0;
+		transition: all 0.9s ease 0s;
+		z-index: 2; 
+	}
+	@media(max-width: 770px){
+		&__content{
+			flex-direction:column;
+		}
+		&__column{
+			width: 100%;
+		}
+	}
+	@media(max-width: 1300px) and (min-width: 770px){
+		&__content{
+			flex-wrap:wrap;
+		}
+		&__column{
+			width: 50%;
+			&__allWidth{
+				width: 100%;
+				flex-direction:row;
+				margin: 0 auto;
+			}
+		}
+		
+	}
+}
+.discover{
+	width: 100%;
+	background-color: rgb(40, 47, 53);
+	&__content{
+		width: 100%;
+		padding:80px 0 80px 0;
+	}
+	&__button{
+		margin: 0 auto;
+		color: $white;
+		background: transparent;
+		border:1px solid $white;
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		width: 304px;
+ 		height: 54px;
+ 		@include font(bold);
+ 		font-size: 14px;
+ 		transition: all 0.6s ease 0s;
+ 		&:hover{
+ 			color: rgb(40, 47, 53);
+ 			background: $white;
+ 		}
+	}
+	@media(max-width: 380px){
+		&__content{
+			padding:50px 0 50px 0;
+		}
+		&__button{
+			width: 254px;
+ 			height: 44px;
+		}
+	}
+}
+.mail{
+	width: 100%;
+	&__content{
+		width: 60%;
+		margin: 0 auto;
+		padding: 100px 0 100px 0;
+		display: flex;
+		flex-direction:column;
+		align-items:center;
+	}
+	&__title{
+		color:$text;
+		@include font(italic);
+		margin:30px 0 30px 0;
+	}
+	&__logo{
+		max-width: 100%;
+	}
+	&__row{
+		display: flex;
+		align-items:center;
+	}
+	&__input{
+		//padding: 10px;
+		color:lighten($text, 15%);
+		border:1px solid lighten($text, 15%);
+		width: 404px;
+		font-size: 18px;
+ 		height: 63px;
+ 		font-style:italic;
+ 		@include font(400);
+
+	}
+	&__button{
+		width: 126px;
+ 		height: 69px;
+ 		@include font(400);
+ 		font-size: 20px;
+ 		background: $element;
+ 		border:1px solid $element;
+ 		color:$white;
+ 		margin-left:10px;
+ 		opacity: 1;
+ 		transition: all 0.6s ease 0s;
+ 		&:hover{
+ 			opacity:0.8;
+ 		}
+	}
+	@media(max-width: 770px){
+		&__button{
+			width: 88px;
+ 			height: 48px;
+ 		}
+ 		&__input{
+ 			width: 254px;
+ 			height: 43px;
+ 		}
+	}
+	@media(max-width: 425px){
+		&__content{
+			padding: 70px 0 70px 0;
+		}
+		&__row{
+			flex-direction:column;
+		}
+		&__button{
+			margin-left: 0;
+			margin-top: 10px;
+			width: 258px;
+		}
+	}
+}
+.footer{
+	width: 100%;
+	background: $block;
+	&__content{
+		width: 100%;
+		display: flex;
+		padding: 100px 0px 100px 0px;
+		align-items:center;
+		justify-content: center;
+	}
+	&__column{
+		display: flex;
+		width: 33.333%;
+		height: 100%;
+		justify-content: center;
+		align-items:center;
+		margin:10px;
+	}
+	&__row{
+		display: flex;
+		align-items:center;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+	}
+	&__text{
+		@include font(400);
+		color:$text;
+		font-style: italic;
+		span{
+			font-weight: bold;
+		}
+	}
+	&__img,&__logo{
+		margin:10px;
+		max-width: 100%;
+	}
+	@media(max-width:770px){
+		&__column{
+			width: 40%;	
+		}
+		&__content{
+			flex-wrap:wrap;
+		}
+	}
+	@media(max-width:500px){
+		&__column{
+			width: 80%;	
+		}
+		&__row{
+			
+		}
+	}
+}
+@media(max-width:770px){
+	body{
+		&.active{
+			overflow: hidden;
+		}
+	}
+}
