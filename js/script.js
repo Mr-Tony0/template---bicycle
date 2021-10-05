@@ -9,3 +9,7 @@ burger.addEventListener('click',function(){
 		addActiveClass.toggleClass('active');
 	})
 })
+$('.social__slider').slick({
+	arrows:false,
+	dots:true,
+});
